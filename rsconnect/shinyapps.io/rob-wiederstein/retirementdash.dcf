@@ -1,0 +1,13 @@
+name: retirementdash
+title:
+username:
+account: rob-wiederstein
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4782307
+bundleId: 5097214
+url: https://rob-wiederstein.shinyapps.io/retirementdash/
+when: 1633184747.12898
+lastSyncTime: 1633184747.12899
+asMultiple: FALSE
+asStatic: FALSE

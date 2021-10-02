@@ -3,7 +3,7 @@
 #' @param input,output,session Internal parameters for {shiny}.
 #'     DO NOT REMOVE.
 #' @import leaflet
-#' @import retirement
+#' @import retirementData
 #' @importFrom ggplot2 ggplot aes_string geom_point
 #'
 #' @noRd
@@ -92,12 +92,12 @@ app_server <- function(input, output, session) {
                 )
             ) |>
             addMarkers(
-                data = retirement::airportLoc,
+                data = retirementData::airportLoc,
                 lng = ~lon,
                 lat = ~lat,
                 icon = airplaneIcon,
                 group = "Airports",
-                popup = leafpop::popupTable(retirement::airportLoc,
+                popup = leafpop::popupTable(retirementData::airportLoc,
                     zcol = c(
                         "airport",
                         "rank",
@@ -109,12 +109,12 @@ app_server <- function(input, output, session) {
                 )
             ) |>
             addMarkers(
-                data = retirement::collegeLoc,
+                data = retirementData::collegeLoc,
                 lng = ~lon,
                 lat = ~lat,
                 icon = mortarboardIcon,
                 group = "Colleges",
-                popup = leafpop::popupTable(retirement::collegeLoc,
+                popup = leafpop::popupTable(retirementData::collegeLoc,
                     zcol = c(
                         "name",
                         "students_2020"
@@ -124,12 +124,12 @@ app_server <- function(input, output, session) {
                 )
             ) |>
             addMarkers(
-                data = retirement::hospitalLoc,
+                data = retirementData::hospitalLoc,
                 lng = ~lon,
                 lat = ~lat,
                 icon = hospitalIcon,
                 group = "Hospitals",
-                popup = leafpop::popupTable(retirement::hospitalLoc,
+                popup = leafpop::popupTable(retirementData::hospitalLoc,
                     zcol = c(
                         "name",
                         "type",
@@ -143,12 +143,12 @@ app_server <- function(input, output, session) {
                 )
             ) |>
             addMarkers(
-                data = retirement::militaryBases,
+                data = retirementData::militaryBases,
                 lng = ~lon,
                 lat = ~lat,
                 icon = chevronIcon,
                 group = "Bases",
-                popup = leafpop::popupTable(retirement::militaryBases,
+                popup = leafpop::popupTable(retirementData::militaryBases,
                     zcol = c(
                         "base",
                         "perimeter",

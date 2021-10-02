@@ -8,8 +8,8 @@
 #' @importFrom stats quantile
 #'
 #' @noRd
-retirementLoc <- retirement::retirementLoc
-irsMigration <- retirement::irsMigration
+retirementLoc <- retirementData::retirementLoc
+irsMigration <- retirementData::irsMigration
 app_ui <- function(request) {
     tagList(
         # Leave this function for adding external resources
