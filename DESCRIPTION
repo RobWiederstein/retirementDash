@@ -20,6 +20,7 @@ Imports:
     leaflet,
     leafpop,
     plotly,
+    plyr,
     processx,
     retirement,
     rlang,

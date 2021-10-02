@@ -5,6 +5,7 @@
 #' @import shiny
 #' @importFrom shinythemes shinytheme
 #' @importFrom shinyWidgets pickerInput numericRangeInput
+#' @importFrom stats quantile
 #'
 #' @noRd
 retirementLoc <- retirement::retirementLoc
