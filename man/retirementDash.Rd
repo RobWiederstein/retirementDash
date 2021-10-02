@@ -5,14 +5,14 @@
 \alias{retirementDash}
 \title{retirementDash:  Finding retirement locations in the US.}
 \description{
-The retirementDash package can provide and narrow prospective counties by important
-demographic, environmental and other characteristics.
+The retirementDash package can provide and narrow prospective retirement counties by important
+demographic, environmental, housing affordability and other characteristics.
 }
 \seealso{
 Useful links:
 \itemize{
-\item https://github.com/robwiederstein/retirementDash/www.github.repo.com
-\item Report bugs at https://github.com/robwiederstein/retirementDash/issues
+\item \url{https://robwiederstein.github.io/retirementDash/}
+\item Report bugs at \url{https://github.com/RobWiederstein/retirementDash/issues}
 }
 }
 \author{

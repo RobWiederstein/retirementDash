@@ -10,8 +10,8 @@
 #' @seealso
 #'
 #' Useful links:
-#' - https://github.com/robwiederstein/retirementDash/
-#' - Report bugs at https://github.com/robwiederstein/retirementDash/issues
+#' - [https://robwiederstein.github.io/retirementDash/](https://robwiederstein.github.io/retirementDash/)
+#' - Report bugs at [https://github.com/RobWiederstein/retirementDash/issues](https://github.com/RobWiederstein/retirementDash/issues)
 #' @docType package
 #' @name retirementDash
 NULL
