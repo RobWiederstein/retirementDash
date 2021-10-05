@@ -19,21 +19,57 @@ app_ui <- function(request) {
             # settings ----
             theme = shinythemes::shinytheme("cosmo"),
             inverse = F,
-            #title = "retirementDash",
-            title = tags$div(tags$img(src="logo.png", width = 108, height = 108, style="float:left; margin-left: 5px; margin-right: 5px; margin-top: -15px; border-radius: 50%;")),
+            title = tags$div(
+                tags$img(src = "img/balloon.png", width = 130, height = 130, style = "float:left; margin-left: 5px; margin-right: 5px; margin-top: -15px; border-radius: 50%;"),
+                tags$title("Retirement Locator")
+            ),
+            footer = tags$footer(
+                HTML(
+                    "<!-- Site footer -->
+<div class='footer navbar-fixed-bottom'>
+<footer class='site-footer'>
+      <div class='container'>
+            <hr>
+      </div>
+      <div class='container'>
+            <div class='row'>
+                  <div class='col-md-8 col-sm-6 col-xs-12'>
+                        <p class='copyright-text'>&copy; 2021 Rob Wiederstein under MIT
+                              <a href='https://github.com/RobWiederstein/retirementDash/blob/master/LICENSE.md'>License</a>.
+                             </p>
+                                 </div>
+
+                                 <div class='col-md-4 col-sm-6 col-xs-12'>
+                                 <ul class='social-icons'>
+                                 <li><a class='github' href='https://github.com/RobWiederstein'><i class='fa fa-github'></i></a></li>
+                                 <li><a class='twitter' href='https://twitter.com/robwiederstein?lang=en'><i class='fa fa-twitter'></i></a></li>
+                                 <li><a class='linkedin' href='https://www.linkedin.com/in/rob-wiederstein-797553138/'><i class='fa fa-linkedin'></i></a></li>
+                                 </ul>
+                                 </div>
+                                 </div>
+                                 </div>
+                                 </footer>
+                                 </div>
+                                 <script src='https://use.fontawesome.com/9d03eba9c5.js'></script>"
+                )
+            ),
             # locator ----
             tabPanel(
-                "Locator",
+                "Location",
                 ## criteria ----
                 column(
                     3,
                     wellPanel(
-                        style = "background-color: #fff; border-color: #2c3e50;",
-                        h1("Criteria"),
+                        style = "background-color: #fff; border-color: #2c3e50; overflow-y:scroll; max-height: 800px;",
+                        br(),
+                        h1("Retirement Locator"),
                         tags$br(),
                         tags$p("The 3,146 US counties may be selected by 17 criteria.
                                Sliders are preset at the 2.5% and 97.5% level to eliminate
                                outliers, leaving 2,028 counties."),
+                        hr(),
+                        ### Input: button filter ----
+                        actionButton("button_filter", "Select counties!"),
                         hr(),
                         ### Groups: ----
                         h4("Groups:"),
@@ -213,9 +249,10 @@ app_ui <- function(request) {
                     9,
                     wellPanel(
                         style = "background-color: #fff; border-color: #2c3e50;",
+                        br(),
                         h1("United States"),
                         hr(),
-                        leaflet::leafletOutput("map", height = 800)
+                        leaflet::leafletOutput("map", height = 600)
                     )
                 )
             ),
@@ -226,7 +263,8 @@ app_ui <- function(request) {
                 column(
                     12,
                     wellPanel(
-                        style = "background-color: #fff; border-color: #2c3e50; height: 1200px",
+                        style = "background-color: #fff; border-color: #2c3e50; height: 800px",
+                        br(),
                         h1("Selected Counties"),
                         hr(),
                         DT::dataTableOutput("tableCounties")
@@ -235,11 +273,15 @@ app_ui <- function(request) {
             ),
             # tab: analyzer ----
             tabPanel(
-                "Analyzer",
+                "Analysis",
                 ## sidebar: criteria ----
                 column(
                     3,
                     wellPanel(
+                        style = "background-color: #fff; border-color: #2c3e50;",
+                        br(),
+                        h1("Plot"),
+                        hr(),
                         ### Input: x-axis ----
                         pickerInput(
                             inputId = "xaxis",
@@ -298,38 +340,41 @@ app_ui <- function(request) {
                 fluidRow(
                     column(
                         3,
-                        h1("Migration"),
-                        hr(),
-                        tags$p("The IRS publishes county-to-county migration data based on tax returns. Counties with less than 20 returns are suppressed."),
-                        tags$p("Step 1: Enter a single state."),
-                        ### Input: State ----
-                        pickerInput(
-                            inputId = "state2",
-                            label = "State: ",
-                            choices = c(sort(unique(irsMigration$state_origin))),
-                            selected = "FL"
-                        ),
-                        tags$p("Step 2: Type a county.  (Partial names may be entered.)"),
-                        ### Input: county ----
-                        textInput("county",
-                                  "County: ",
-                                  placeholder = "Pinellas",
-                                  value = "Pinellas"
-                        ),
-                        tags$p("Step 3:  Push the 'plot' button to see the results."),
-                        ### Input: button ----
-                        actionButton("button", "Plot chart!")
+                        wellPanel(
+                            style = "background-color: #fff; border-color: #2c3e50;",
+                            br(),
+                            h1("Migration"),
+                            hr(),
+                            tags$p("The IRS publishes county-to-county migration data based on tax returns. Counties with less than 20 returns are suppressed."),
+                            tags$p("Step 1: Enter a single state."),
+                            ### Input: State ----
+                            pickerInput(
+                                inputId = "state2",
+                                label = "State: ",
+                                choices = c(sort(unique(irsMigration$state_origin))),
+                                selected = "FL"
+                            ),
+                            tags$p("Step 2: Pick a county."),
+                            ### Input: county ----
+                            uiOutput("county1"),
+                            tags$p("Step 3:  Push the 'plot' button to see the results."),
+                            ### Input: button ----
+                            actionButton("button", "Plot chart!")
+                        )
                     ),
                     column(
                         9,
-                        tabsetPanel(
-                            tabPanel(
-                                "migration - out",
-                                leaflet::leafletOutput("migration_out", height = 800)
-                            ),
-                            tabPanel(
-                                "migration - in",
-                                leaflet::leafletOutput("migration_in", height = 800)
+                        wellPanel(
+                            style = "background-color: #fff; border-color: #2c3e50;",
+                            tabsetPanel(
+                                tabPanel(
+                                    "migration - out",
+                                    leaflet::leafletOutput("migration_out", height = 800)
+                                ),
+                                tabPanel(
+                                    "migration - in",
+                                    leaflet::leafletOutput("migration_in", height = 800)
+                                )
                             )
                         )
                     )
@@ -339,6 +384,7 @@ app_ui <- function(request) {
             tabPanel(
                 "Overview",
                 tagList(
+                    br(),
                     includeMarkdown(
                         file.path(resourcePaths()["www"], "README.md")
                     )
@@ -359,6 +405,9 @@ app_ui <- function(request) {
 golem_add_external_resources <- function() {
     add_resource_path(
         "www", app_sys("app/www")
+    )
+    add_resource_path(
+        "img", app_sys("app/www/img")
     )
 
     tags$head(
