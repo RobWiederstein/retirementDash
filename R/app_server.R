@@ -9,7 +9,7 @@
 #' @noRd
 app_server <- function(input, output, session) {
     # Your application server logic
-    filtered <- reactive({
+    filtered <- eventReactive(input$button_filter, {
         retirementLoc |>
             # grouping variables
             dplyr::filter(state %in% input$state) |>
@@ -58,7 +58,10 @@ app_server <- function(input, output, session) {
             iconUrl = "./img/hospital.svg",
             iconWidth = 15, iconHeight = 15
         )
-        leaflet() |>
+        leaflet( options = leafletOptions(minZoom = 4,
+                                          maxZoom = 10,
+                                          dragging = TRUE
+                                          )) |>
             # addTiles() |>
             addProviderTiles(providers$CartoDB.DarkMatter) |>
             fitBounds(
@@ -70,6 +73,7 @@ app_server <- function(input, output, session) {
             # setView(mean(df$lon, na.rm = T),
             #         mean(df$lat, na.rm = T),
             #         zoom = 4) |>
+
             addCircleMarkers(
                 data = df,
                 lng = ~lon,
@@ -225,16 +229,33 @@ app_server <- function(input, output, session) {
             "y"
         ))
     })
+    output$county1 <- renderUI({
+        counties <-
+            irsMigration |>
+            dplyr::filter(state_origin == input$state2) |>
+            dplyr::select(county_origin) |>
+            dplyr::mutate(county_origin = gsub(" Non-migrants", "", county_origin)) |>
+            dplyr::distinct() |>
+            dplyr::arrange(county_origin) |>
+            dplyr::pull()
+
+        pickerInput(
+            inputId = "county1",
+            label = "County: ",
+            choices = counties
+        )
+    })
     migration_out_filtered <- eventReactive(input$button, {
         irsMigration %>%
             dplyr::filter(state_origin == input$state2) %>%
-            dplyr::filter(grepl(input$county, county_origin))
+            dplyr::filter(county_origin == input$county1)
     })
     migration_in_filtered <- eventReactive(input$button, {
         irsMigration %>%
             dplyr::filter(state_target == input$state2) %>%
-            dplyr::filter(grepl(input$county, county_target))
+            dplyr::filter(county_target == input$county1)
     })
+
     output$migration_out <- renderLeaflet({
         df.out <- migration_out_filtered()
         #lines
