@@ -263,7 +263,7 @@ app_ui <- function(request) {
                 column(
                     12,
                     wellPanel(
-                        style = "background-color: #fff; border-color: #2c3e50; height: 800px",
+                        style = "background-color: #fff; border-color: #2c3e50; height: 600px",
                         br(),
                         h1("Selected Counties"),
                         hr(),
@@ -330,7 +330,7 @@ app_ui <- function(request) {
                         style = "background-color: #fff; border-color: #2c3e50;",
                         h1("Scatter Plot"),
                         hr(),
-                        plotly::plotlyOutput("plotlyScatter", height = "800px")
+                        plotly::plotlyOutput("plotlyScatter", height = "600px")
                     )
                 )
             ),
@@ -369,11 +369,11 @@ app_ui <- function(request) {
                             tabsetPanel(
                                 tabPanel(
                                     "migration - out",
-                                    leaflet::leafletOutput("migration_out", height = 800)
+                                    leaflet::leafletOutput("migration_out", height = 600)
                                 ),
                                 tabPanel(
                                     "migration - in",
-                                    leaflet::leafletOutput("migration_in", height = 800)
+                                    leaflet::leafletOutput("migration_in", height = 600)
                                 )
                             )
                         )
