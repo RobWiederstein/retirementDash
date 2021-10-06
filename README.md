@@ -10,49 +10,78 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/RobWiederstein/retirementDash/workflows/R-CMD-check/badge.svg)](https://github.com/RobWiederstein/retirementDash/actions)
 <!-- badges: end -->
 
-The goal of retirementDash is to …
+<h4 align="center">
+<a href="https://rob-wiederstein.shinyapps.io/retirement-dashboard/?_ga=2.138388592.1542637753.1630614255-2110524801.1630416115"><img src='man/figures/retirementDash.png' align="center" height="400"/><br/></a>
+<a href="https://rob-wiederstein.shinyapps.io/retirementdash/?_ga=2.99037854.1258475930.1633524763-1285109657.1633184174">Retirement
+Locator Dashboard</a>
+</h4>
+
+The goal of `retirementDash` is to present pertinent and relevant
+criteria for selecting a retirement location in the United States. This
+project proceeded in two stages. The first stage was to create a
+county-level dataset `retirementData`, which is hosted in its own
+package and
+[repository](https://github.com/RobWiederstein/retirementData). The
+second stage was to display the data in an interactive, user-friendly
+dashboard, shown above.
 
 ## Installation
 
-You can install the released version of retirementDash from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the development and experimental version of
+`retirementDash` from its
+[repository](https://github.com/RobWiederstein/retirementDash) with:
 
 ``` r
-install.packages("retirementDash")
+# Or the development version from GitHub:
+# install.packages("devtools")
+install_github("RobWiederstein/retirementDash")
 ```
 
-## Example
+## Usage
 
-This is a basic example which shows you how to solve a common problem:
+### Step 1 Landing Page
 
-``` r
-library(retirementDash)
-## basic example code
-```
+The side panel provides 17 criteria to filter the 3,142 United States
+counties. The sliders were preset to the 2.5% and the 97.5% percentiles
+to eliminate outliers. With seventeen sliders set in a similar manner,
+only 2028 counties display when the `select counties` button is pushed.
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Step 2 Counties Tab
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+The counties tab displays the filtered results in a tabular form. The
+user may select, sort and download the counties that meet his or her
+criteria.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+### Step 3 Analyzer Tab
 
-You can also embed plots, for example:
+The user may use the `x-axis` and `y-axis` axis to create a scatterplot.
+Additional attributes for size and color are provided. This could be
+helpful in further refining the criteria on the landing page. For
+example, some parts of the United States have very high housing prices
+relative to household income, a variable named `years_to_payoff`. Users
+may then reset the inputs based upon the analyzer plot.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+## Acknowledgements
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+The following packages were indispensable to the project:
+
+-   [`shiny`](https://github.com/rstudio/shiny)
+
+-   [`golem`](https://github.com/ThinkR-open/golem)
+
+-   [`pkgdown`](https://github.com/r-lib/pkgdown)
+
+-   [`usethis`](https://github.com/r-lib/usethis)
+
+-   [`leaflet`](https://github.com/Leaflet/Leaflet)
+
+-   [`plotly`](https://github.com/plotly/plotly.R)
+
+-   [`DT`](https://github.com/rstudio/DT)
+
+## Code of Conduct
+
+Please note that the retirementDash project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
