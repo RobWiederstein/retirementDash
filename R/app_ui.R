@@ -252,7 +252,7 @@ app_ui <- function(request) {
                         br(),
                         h1("United States"),
                         hr(),
-                        leaflet::leafletOutput("map", height = 600)
+                        leaflet::leafletOutput("map", height = "600")
                     )
                 )
             ),
@@ -263,11 +263,11 @@ app_ui <- function(request) {
                 column(
                     12,
                     wellPanel(
-                        style = "background-color: #fff; border-color: #2c3e50; height: 600px",
+                        style = "background-color: #fff; border-color: #2c3e50;  overflow-y:scroll; max-height: 800px;",
                         br(),
                         h1("Selected Counties"),
                         hr(),
-                        DT::dataTableOutput("tableCounties")
+                        DT::DTOutput("tableCounties", height = 600)
                     )
                 )
             ),
@@ -278,7 +278,7 @@ app_ui <- function(request) {
                 column(
                     3,
                     wellPanel(
-                        style = "background-color: #fff; border-color: #2c3e50;",
+                        style = "background-color: #fff; border-color: #2c3e50; overflow-y:scroll;",
                         br(),
                         h1("Plot"),
                         hr(),
@@ -386,7 +386,7 @@ app_ui <- function(request) {
                 tagList(
                     br(),
                     includeMarkdown(
-                        file.path(resourcePaths()["www"], "README.md")
+                        file.path(resourcePaths()["www"], "OVERVIEW.md")
                     )
                 )
             )
