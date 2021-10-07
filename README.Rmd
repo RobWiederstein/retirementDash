@@ -40,8 +40,6 @@ install_github("RobWiederstein/retirementDash")
 
 ## Usage
 
-
-
 ### Step 1 Landing Page
 
 The side panel provides 17 criteria to filter the 3,142 United States counties.  The sliders were preset to the 2.5% and the 97.5% percentiles to eliminate outliers.  With seventeen sliders set in a similar manner, only 2028 counties display when the `select counties` button is pushed.

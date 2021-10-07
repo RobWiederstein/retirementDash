@@ -52,7 +52,7 @@ The counties tab displays the filtered results in a tabular form. The
 user may select, sort and download the counties that meet his or her
 criteria.
 
-### Step 3 Analyzer Tab
+### Step 3 Analysis Tab
 
 The user may use the `x-axis` and `y-axis` axis to create a scatterplot.
 Additional attributes for size and color are provided. This could be
@@ -61,9 +61,16 @@ example, some parts of the United States have very high housing prices
 relative to household income, a variable named `years_to_payoff`. Users
 may then reset the inputs based upon the analyzer plot.
 
-## Acknowledgements
+### Step 4 Migration Tab
 
-The following packages were indispensable to the project:
+A fourth tab includes inter-county migration data from the IRS. Entry of
+one county shows where its residents migrated to (“moved-out”) and where
+its residents came from (“moved-in”).
+
+## Acknowledgments
+
+The following packages were indispensable to the both the
+`retirementData` and `retirementDash`projects:
 
 -   [`shiny`](https://github.com/rstudio/shiny)
 
@@ -72,6 +79,8 @@ The following packages were indispensable to the project:
 -   [`pkgdown`](https://github.com/r-lib/pkgdown)
 
 -   [`usethis`](https://github.com/r-lib/usethis)
+
+-   [`styler`](https://github.com/r-lib/styler)
 
 -   [`leaflet`](https://github.com/Leaflet/Leaflet)
 
