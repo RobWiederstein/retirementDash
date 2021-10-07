@@ -178,56 +178,34 @@ app_server <- function(input, output, session) {
             leaflet::hideGroup("Hospitals") |>
             leaflet::hideGroup("Bases")
     })
-    output$tableCounties <- DT::renderDataTable({
+    output$tableCounties <- DT::renderDT({
         df <- filtered()
+        df <- df |> dplyr::select(!c(fips, lat, lon))
         DT::datatable(df,
             rownames = F,
             style = "bootstrap",
             class = "compact",
-            extensions = c("Buttons", "Scroller"),
+            extensions = c("Buttons", "FixedColumns"),
             options = list(
                 dom = "Blrtip",
-                scrollY = 700,
-                scroller = TRUE,
-                scrollX = TRUE,
-                columnDefs = list(
-                    list(
-                        visible = TRUE,
-                        targets = c(1:7)
-                    )
-                ),
-                buttons = list(
-                    I("colvis"), # turn columns on and off
-                    "csv", # download as .csv
-                    "excel" # download as .xlsx
-                )
-            ),
-            colnames = c(
-                "fips", "lon", "lat", "state", "county", "pop_2020", "pct_pop_change",
-                "cbsa_desig", "rucc_2013", "partisan_lean", "med_hh_inc_2019",
-                "pct_bachelor", "broadband_2017", "life_exp", "violent_crime_rate",
-                "average_daily_pm2_5", "prim_care_dr_rate", "avg_annual_temp",
-                "median_home_price", "yoy_price_chg_pct", "years_to_payoff"
+                buttons = c('colvis', 'csv', 'excel'),
+                scrollX = T,
+                fixedColumns = list(leftColumns = 2)
             )
         )
     })
     output$plotlyScatter <- plotly::renderPlotly({
         df <- filtered()
         p <- ggplot(df, aes_string(input$xaxis,
-            input$yaxis,
-            color = input$groupby,
-            size = input$size,
-            key = "county"
-        )) +
-            geom_point(alpha = .5)
+                                   input$yaxis,
+                                   color = input$groupby,
+                                   size = input$size,
+                                   key = "county"
+                                   )
+                    ) +
+            geom_point(ggplot2::aes(text = sprintf("county: %s<br>state: %s", county, state), alpha = .5))
         # p <- p + theme_dark()
-        plotly::ggplotly(p, tooltip = c(
-            "key",
-            "size",
-            "color",
-            "x",
-            "y"
-        ))
+        plotly::ggplotly(p, tooltip = c( "text", "size", "x", "y"))
     })
     output$county1 <- renderUI({
         counties <-
