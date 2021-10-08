@@ -20,7 +20,9 @@ app_ui <- function(request) {
             theme = shinythemes::shinytheme("cosmo"),
             inverse = F,
             title = tags$div(
-                tags$img(src = "img/balloon.png", width = 130, height = 130, style = "float:left; margin-left: 5px; margin-right: 5px; margin-top: -15px; border-radius: 50%;"),
+                tags$img(src = "img/balloon.png", width = 130, height = 130,
+                         style = "float:left; margin-left: 5px; margin-right:
+                         5px; margin-top: -15px; border-radius: 50%;"),
                 tags$title("Retirement Locator")
             ),
             footer = tags$footer(
