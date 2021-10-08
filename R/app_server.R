@@ -177,7 +177,7 @@ app_server <- function(input, output, session) {
             leaflet::hideGroup("Colleges") |>
             leaflet::hideGroup("Hospitals") |>
             leaflet::hideGroup("Bases")
-    })
+        })
     output$tableCounties <- DT::renderDT({
         df <- filtered()
         df <- df |> dplyr::select(!c(fips, lat, lon))

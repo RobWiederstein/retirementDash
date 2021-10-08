@@ -253,8 +253,8 @@ app_ui <- function(request) {
                         h1("United States"),
                         hr(),
                         leaflet::leafletOutput("map", height = "600")
+                        )
                     )
-                )
             ),
             # counties ----
             tabPanel(
