@@ -48,7 +48,7 @@ The map contains an overlay for airports, colleges, hospitals and military bases
 
 ### Step 2 Counties Tab
 
-The counties tab displays the filtered results in a tabular form.  The user may select, sort and download the counties that meet his or her criteria.
+The counties tab displays the filtered results in a tabular form.  The user may select variables and sort and download the counties that meet his or her criteria.
 
 ### Step 3 Analysis Tab
 
