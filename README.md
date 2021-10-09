@@ -48,7 +48,9 @@ only 2028 counties display when the `select counties` button is pushed.
 
 The map contains an overlay for airports, colleges, hospitals and
 military bases. For those features to be displayed, the adjacent box
-must be checked.
+must be checked. Airports include information regarding annual
+passengers; colleges the number of students; hospitals the CMS star
+rating; and military bases the surface area.
 
 ### Step 2 Counties Tab
 
