@@ -46,6 +46,10 @@ counties. The sliders were preset to the 2.5% and the 97.5% percentiles
 to eliminate outliers. With seventeen sliders set in a similar manner,
 only 2028 counties display when the `select counties` button is pushed.
 
+The map contains an overlay for airports, colleges, hospitals and
+military bases. For those features to be displayed, the adjacent box
+must be checked.
+
 ### Step 2 Counties Tab
 
 The counties tab displays the filtered results in a tabular form. The
@@ -67,7 +71,7 @@ A fourth tab includes inter-county migration data from the IRS. Entry of
 one county shows where its residents migrated to (“moved-out”) and where
 its residents came from (“moved-in”).
 
-## Acknowledgments
+## Acknowledgements
 
 The following packages were indispensable to the both the
 `retirementData` and `retirementDash`projects:
