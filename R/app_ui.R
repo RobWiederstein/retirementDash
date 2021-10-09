@@ -55,7 +55,7 @@ app_ui <- function(request) {
                                  <script src='https://use.fontawesome.com/9d03eba9c5.js'></script>"
                 )
             ),
-            # locator -----
+            # locator ----
             tabPanel(
                 "Location",
                 ## criteria ----
