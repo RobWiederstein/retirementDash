@@ -25,5 +25,5 @@ jobs:
         shell: Rscript {0}
 
       - name: Style root directory
-        run: styler::style_pkg(style = tidyverse_style)
+        run: styler::style_pkg()
         shell: Rscript {0}
