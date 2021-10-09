@@ -10,28 +10,28 @@
 app_server <- function(input, output, session) {
     # Your application server logic
     filtered <- eventReactive(input$button_filter, {
-        retirementLoc |>
+        retirementLoc %>%
             # grouping variables
-            dplyr::filter(state %in% input$state) |>
-            dplyr::filter(cbsa_desig %in% input$cbsa_desig) |>
-            dplyr::filter(rucc_2013 %in% input$rucc_2013) |>
+            dplyr::filter(state %in% input$state) %>%
+            dplyr::filter(cbsa_desig %in% input$cbsa_desig) %>%
+            dplyr::filter(rucc_2013 %in% input$rucc_2013) %>%
             # demographic
-            dplyr::filter(pop_2020 >= input$pop_2020[1] & pop_2020 <= input$pop_2020[2]) |>
-            dplyr::filter(pct_pop_change >= input$pct_pop_change[1] & pct_pop_change <= input$pct_pop_change[2]) |>
-            dplyr::filter(partisan_lean >= input$partisan_lean[1] & partisan_lean <= input$partisan_lean[2]) |>
-            dplyr::filter(broadband_2017 >= input$broadband_2017[1] & broadband_2017 <= input$broadband_2017[2]) |>
-            dplyr::filter(med_hh_inc_2019 >= input$med_hh_inc_2019[1] & med_hh_inc_2019 <= input$med_hh_inc_2019[2]) |>
-            dplyr::filter(pct_bachelor >= input$pct_bachelor[1] & pct_bachelor <= input$pct_bachelor[2]) |>
+            dplyr::filter(pop_2020 >= input$pop_2020[1] & pop_2020 <= input$pop_2020[2]) %>%
+            dplyr::filter(pct_pop_change >= input$pct_pop_change[1] & pct_pop_change <= input$pct_pop_change[2]) %>%
+            dplyr::filter(partisan_lean >= input$partisan_lean[1] & partisan_lean <= input$partisan_lean[2]) %>%
+            dplyr::filter(broadband_2017 >= input$broadband_2017[1] & broadband_2017 <= input$broadband_2017[2]) %>%
+            dplyr::filter(med_hh_inc_2019 >= input$med_hh_inc_2019[1] & med_hh_inc_2019 <= input$med_hh_inc_2019[2]) %>%
+            dplyr::filter(pct_bachelor >= input$pct_bachelor[1] & pct_bachelor <= input$pct_bachelor[2]) %>%
             # healthcare
-            dplyr::filter(life_exp >= input$life_exp[1] & life_exp <= input$life_exp[2]) |>
-            dplyr::filter(violent_crime_rate >= input$violent_crime_rate[1] & violent_crime_rate <= input$violent_crime_rate[2]) |>
-            dplyr::filter(average_daily_pm2_5 >= input$average_daily_pm2_5[1] & average_daily_pm2_5 <= input$average_daily_pm2_5[2]) |>
-            dplyr::filter(prim_care_dr_rate >= input$prim_care_dr_rate[1] & prim_care_dr_rate <= input$prim_care_dr_rate[2]) |>
+            dplyr::filter(life_exp >= input$life_exp[1] & life_exp <= input$life_exp[2]) %>%
+            dplyr::filter(violent_crime_rate >= input$violent_crime_rate[1] & violent_crime_rate <= input$violent_crime_rate[2]) %>%
+            dplyr::filter(average_daily_pm2_5 >= input$average_daily_pm2_5[1] & average_daily_pm2_5 <= input$average_daily_pm2_5[2]) %>%
+            dplyr::filter(prim_care_dr_rate >= input$prim_care_dr_rate[1] & prim_care_dr_rate <= input$prim_care_dr_rate[2]) %>%
             # weather
-            dplyr::filter(avg_annual_temp >= input$avg_annual_temp[1] & avg_annual_temp <= input$avg_annual_temp[2]) |>
+            dplyr::filter(avg_annual_temp >= input$avg_annual_temp[1] & avg_annual_temp <= input$avg_annual_temp[2]) %>%
             # home valuation
-            dplyr::filter(median_home_price >= input$median_home_price[1] & median_home_price <= input$median_home_price[2]) |>
-            dplyr::filter(yoy_price_chg_pct >= input$yoy_price_chg_pct[1] & yoy_price_chg_pct <= input$yoy_price_chg_pct[2]) |>
+            dplyr::filter(median_home_price >= input$median_home_price[1] & median_home_price <= input$median_home_price[2]) %>%
+            dplyr::filter(yoy_price_chg_pct >= input$yoy_price_chg_pct[1] & yoy_price_chg_pct <= input$yoy_price_chg_pct[2]) %>%
             dplyr::filter(years_to_payoff >= input$years_to_payoff[1] & years_to_payoff <= input$years_to_payoff[2])
     })
     output$map <- leaflet::renderLeaflet({
@@ -61,18 +61,18 @@ app_server <- function(input, output, session) {
         leaflet( options = leafletOptions(minZoom = 4,
                                           maxZoom = 10,
                                           dragging = TRUE
-                                          )) |>
-            # addTiles() |>
-            addProviderTiles(providers$CartoDB.DarkMatter) |>
+                                          )) %>%
+            # addTiles() %>%
+            addProviderTiles(providers$CartoDB.DarkMatter) %>%
             fitBounds(
                 lng1 = min(df$lon, na.rm = T),
                 lng2 = max(df$lon, na.rm = T),
                 lat1 = min(df$lat, na.rm = T),
                 lat2 = max(df$lat, na.rm = T)
-            ) |>
+            ) %>%
             # setView(mean(df$lon, na.rm = T),
             #         mean(df$lat, na.rm = T),
-            #         zoom = 4) |>
+            #         zoom = 4) %>%
 
             addCircleMarkers(
                 data = df,
@@ -94,7 +94,7 @@ app_server <- function(input, output, session) {
                         "years_to_payoff"
                     )
                 )
-            ) |>
+            ) %>%
             addMarkers(
                 data = retirementData::airportLoc,
                 lng = ~lon,
@@ -111,7 +111,7 @@ app_server <- function(input, output, session) {
                     row.numbers = F,
                     feature.id = F
                 )
-            ) |>
+            ) %>%
             addMarkers(
                 data = retirementData::collegeLoc,
                 lng = ~lon,
@@ -126,7 +126,7 @@ app_server <- function(input, output, session) {
                     row.numbers = F,
                     feature.id = F
                 )
-            ) |>
+            ) %>%
             addMarkers(
                 data = retirementData::hospitalLoc,
                 lng = ~lon,
@@ -145,7 +145,7 @@ app_server <- function(input, output, session) {
                     row.numbers = F,
                     feature.id = F
                 )
-            ) |>
+            ) %>%
             addMarkers(
                 data = retirementData::militaryBases,
                 lng = ~lon,
@@ -161,26 +161,26 @@ app_server <- function(input, output, session) {
                     row.numbers = F,
                     feature.id = F
                 )
-            ) |>
+            ) %>%
             addLegend("bottomright",
                 pal = pal,
                 values = df$cbsa_desig,
                 title = "CBSA Designation",
                 labFormat = labelFormat(prefix = "$"),
                 opacity = 1
-            ) |>
+            ) %>%
             leaflet::addLayersControl(
                 overlayGroups = c("Airports", "Colleges", "Hospitals", "Bases"),
                 options = layersControlOptions(collapsed = FALSE)
-            ) |>
-            leaflet::hideGroup("Airports") |>
-            leaflet::hideGroup("Colleges") |>
-            leaflet::hideGroup("Hospitals") |>
+            ) %>%
+            leaflet::hideGroup("Airports") %>%
+            leaflet::hideGroup("Colleges") %>%
+            leaflet::hideGroup("Hospitals") %>%
             leaflet::hideGroup("Bases")
         })
     output$tableCounties <- DT::renderDT({
         df <- filtered()
-        df <- df |> dplyr::select(!c(fips, lat, lon))
+        df <- df %>% dplyr::select(!c(fips, lat, lon))
         DT::datatable(df,
             rownames = F,
             style = "bootstrap",
@@ -209,12 +209,12 @@ app_server <- function(input, output, session) {
     })
     output$county1 <- renderUI({
         counties <-
-            irsMigration |>
-            dplyr::filter(state_origin == input$state2) |>
-            dplyr::select(county_origin) |>
-            dplyr::mutate(county_origin = gsub(" Non-migrants", "", county_origin)) |>
-            dplyr::distinct() |>
-            dplyr::arrange(county_origin) |>
+            irsMigration %>%
+            dplyr::filter(state_origin == input$state2) %>%
+            dplyr::select(county_origin) %>%
+            dplyr::mutate(county_origin = gsub(" Non-migrants", "", county_origin)) %>%
+            dplyr::distinct() %>%
+            dplyr::arrange(county_origin) %>%
             dplyr::pull()
 
         pickerInput(

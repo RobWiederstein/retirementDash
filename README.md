@@ -56,7 +56,8 @@ rating; and military bases the surface area.
 
 The counties tab displays the filtered results in a tabular form. The
 user may select variables and sort and download the counties that meet
-his or her criteria.
+his or her criteria. This is particulary useful for preserving the
+results.
 
 ### Step 3 Analysis Tab
 
