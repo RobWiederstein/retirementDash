@@ -1,7 +1,6 @@
 pandoc: 2.14.1
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles:
-  retirementDash: retirementDash.html
-last_built: 2021-10-07T00:19Z
+articles: {}
+last_built: 2021-10-10T23:46Z
 
