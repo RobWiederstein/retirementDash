@@ -13,3 +13,4 @@ $run_dev.*
 ^docs$
 ^app\.R$
 ^rsconnect$
+^codecov\.yml$
