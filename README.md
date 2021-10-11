@@ -8,6 +8,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/RobWiederstein/retirementDash/workflows/R-CMD-check/badge.svg)](https://github.com/RobWiederstein/retirementDash/actions)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-bright%20green)](https://img.shields.io/badge/license-MIT-bright%20green)
 <!-- badges: end -->
 
 <h4 align="center">
@@ -76,8 +78,8 @@ its residents came from (“moved-in”).
 
 ## Acknowledgements
 
-The following packages were indispensable to the both the
-`retirementData` and `retirementDash`projects:
+The following packages were indispensable to the `retirementData` and
+`retirementDash`projects:
 
 -   [`shiny`](https://github.com/rstudio/shiny)
 
