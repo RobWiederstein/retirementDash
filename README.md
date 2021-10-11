@@ -10,6 +10,10 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/RobWiederstein/retirementDash/workflows/R-CMD-check/badge.svg)](https://github.com/RobWiederstein/retirementDash/actions)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-bright%20green)](https://img.shields.io/badge/license-MIT-bright%20green)
+[![Codecov test
+coverage](https://codecov.io/gh/RobWiederstein/retirementDash/branch/master/graph/badge.svg)](https://codecov.io/gh/RobWiederstein/retirementDash?branch=master)
+[![Last
+Commit](https://img.shields.io/github/last-commit/RobWiederstein/retirementDash)](https://img.shields.io/github/last-commit/RobWiederstein/retirementDash)
 <!-- badges: end -->
 
 <h4 align="center">
@@ -58,7 +62,7 @@ rating; and military bases the surface area.
 
 The counties tab displays the filtered results in a tabular form. The
 user may select variables and sort and download the counties that meet
-his or her criteria. This is particulary useful for preserving the
+his or her criteria. This is particularly useful for preserving the
 results.
 
 ### Step 3 Analysis Tab
@@ -76,7 +80,7 @@ A fourth tab includes inter-county migration data from the IRS. Entry of
 one county shows where its residents migrated to (“moved-out”) and where
 its residents came from (“moved-in”).
 
-## Acknowledgements
+## Acknowledgments
 
 The following packages were indispensable to the `retirementData` and
 `retirementDash`projects:
