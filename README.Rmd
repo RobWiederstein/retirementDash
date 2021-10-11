@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 Locator Dashboard</a>
 </h4>
 
-The purpose of `retirementDash` is to present pertinent and relevant criteria for selecting a retirement location in the United States.  This project proceeded in two stages.  The first stage was to create a county-level dataset `retirementData`, which is hosted in its own package and [repository](https://github.com/RobWiederstein/retirementData).  The second stage was to display the data in an interactive, user-friendly dashboard, shown above.
+The goal of `retirementDash` is to present pertinent and relevant criteria for selecting a retirement location in the United States.  This project proceeded in two stages.  The first stage was to create a county-level dataset `retirementData`, which is hosted in its own package and [repository](https://github.com/RobWiederstein/retirementData).  The second stage was to display the data in an interactive, user-friendly dashboard, shown above.
 
 ## Installation
 

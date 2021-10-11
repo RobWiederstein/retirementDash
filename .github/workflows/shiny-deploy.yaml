@@ -27,6 +27,12 @@ jobs:
         shell: Rscript {0}
 
       - name: Authorize and deploy app
+        env:
+          RSCONNECT_USER: ${{ secrets.RSCONNECT_USER }}
+          RSCONNECT_TOKEN: ${{ secrets.RSCONNECT_TOKEN }}
+          RSCONNECT_SECRET: ${{ secrets.RSCONNECT_SECRET }}
+
+      - name: Authorize and deploy app
         run: |
           rsconnect::setAccountInfo(${{ secrets.RSCONNECT_USER }}, ${{ secrets.RSCONNECT_TOKEN }}, ${{ secrets.RSCONNECT_SECRET }})
           rsconnect::deployApp()

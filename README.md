@@ -22,7 +22,7 @@ Commit](https://img.shields.io/github/last-commit/RobWiederstein/retirementDash)
 Locator Dashboard</a>
 </h4>
 
-The purpose of `retirementDash` is to present pertinent and relevant
+The goal of `retirementDash` is to present pertinent and relevant
 criteria for selecting a retirement location in the United States. This
 project proceeded in two stages. The first stage was to create a
 county-level dataset `retirementData`, which is hosted in its own
