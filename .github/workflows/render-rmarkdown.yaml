@@ -23,6 +23,11 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v1
 
+      - name: Install rmarkdown
+        run: |
+          Rscript -e 'install.packages("rmarkdown")'
+          Rscript -e 'library("rmarkdown")'
+
       - name: Render Rmarkdown files
         run: |
           RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '[.]Rmd$'))
