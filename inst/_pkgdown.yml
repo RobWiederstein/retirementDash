@@ -1,0 +1,13 @@
+home:
+  title: An R package for discovering US retirement locations
+  description: Discover appealing US counties for retirement
+
+template:
+  opengraph:
+    image:
+      src: man/figures/retirementDash.png
+      alt: "a shiny dashboard for interactive discovery""
+    twitter:
+      creator: "@RobWiederstein"
+      site: "www.robwiederstein.org"
+      card: summary_large_image
