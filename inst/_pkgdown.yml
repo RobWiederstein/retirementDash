@@ -6,7 +6,7 @@ template:
   opengraph:
     image:
       src: man/figures/retirementDash.png
-      alt: "a shiny dashboard for interactive discovery""
+      alt: "a shiny dashboard for interactive discovery"
     twitter:
       creator: "@RobWiederstein"
       site: "www.robwiederstein.org"
