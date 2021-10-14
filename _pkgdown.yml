@@ -5,7 +5,7 @@ home:
 template:
   opengraph:
     image:
-      src: reference/figures/balloons.png
+      src: https://dl.dropbox.com/s/cjglyhl0vpxby4i/ballons.png
       alt: "a shiny dashboard for interactive discovery"
     twitter:
       creator: "@RobWiederstein"
