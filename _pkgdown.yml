@@ -9,5 +9,5 @@ template:
       alt: "a shiny dashboard for interactive discovery"
     twitter:
       creator: "@RobWiederstein"
-      site: "https://robwiederstein.github.io/retirementDash/"
+      site: 'https://rob-wiederstein.shinyapps.io/retirementdash/'
       card: summary_large_image
